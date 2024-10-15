@@ -1,10 +1,8 @@
 import sqlite3
 
-# Подключаемся к базе данных (если файла нет, он будет создан)
 conn = sqlite3.connect("counterparties.db")
 cursor = conn.cursor()
 
-# SQL-запросы для создания таблиц и вставки данных
 sql_script = """
 CREATE TABLE IF NOT EXISTS type_person(
     value varchar(16) PRIMARY KEY
@@ -34,13 +32,10 @@ INSERT INTO counterparties(internal_name, INN, KPP, OGRN, heads, banks, full_nam
 ('Рога и копыта', '5084764622', '507477325', '6407886451211', '{"Курпина Евгения Анатольевна": {"position": "Генеральный директор", "surname": "Курпина", "first_name": "Евгения", "middle_name": "Анатольевна", "sex": "female", "act_upon": "Устава", "from_date_of": "2013-06-21", "up_to_date_of": ""}}', '{"Банк Тинькоф": {"account": "94854348840008631648", "name": "Банк Тинькоф", "corr_account": "74746662829900034332", "bik": "932113118"}}', 'Общество с ограниченной ответственностью "Рога и Копыта"');
 """
 
-# Выполняем SQL-запросы
 cursor.executescript(sql_script)
 
-# Сохраняем изменения
 conn.commit()
 
-# Закрываем соединение
 conn.close()
 
 print("Таблицы успешно созданы и данные добавлены!")

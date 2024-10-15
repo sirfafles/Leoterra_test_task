@@ -37,6 +37,5 @@ def get_banks_info_by_id(unique_id):
     conn.close()
 
 
-# Пример использования функции
 bank_id = int(input("Введите нужный id записи"))
 get_banks_info_by_id(bank_id)
